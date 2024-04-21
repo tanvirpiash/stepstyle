@@ -1,0 +1,86 @@
+[
+   {
+      "id": 1,
+      "title": "Lorem ipsum dolor sit amet",
+      "price": 109.95,
+      "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos nulla ab facere beatae illum provident perferendis rem asperiores aliquid nisi?",
+      "image": "/products/1.jpg"
+   },
+   {
+      "id": 2,
+      "title": "Amet nulla error maxime expedita",
+      "price": 22.3,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nulla error maxime expedita optio pariatur?",
+      "image": "/products/2.jpg"
+   },
+   {
+      "id": 3,
+      "title": "Reprehenderit, facere corrupti! Vel, nemo.",
+      "price": 55.99,
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, facere corrupti! Vel, nemo.",
+      "image": "/products/3.jpg"
+   },
+   {
+      "id": 4,
+      "title": "Facilis, quibusdam ipsum dolor",
+      "price": 15.99,
+      "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, quibusdam?",
+      "image": "/products/4.jpg"
+   },
+   {
+      "id": 5,
+      "title": "Facere ut inventore reprehenderit",
+      "price": 695,
+      "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere ut inventore reprehenderit aliquam numquam.",
+      "image": "/products/5.jpg"
+   },
+   {
+      "id": 6,
+      "title": "Rem accusantium quod porro",
+      "price": 168,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem accusantium quod porro, illum laudantium vel.",
+      "image": "/products/6.jpg"
+   },
+   {
+      "id": 7,
+      "title": "Eligendi commodi voluptates",
+      "price": 9.99,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi commodi voluptates similique vero.",
+      "image": "/products/7.jpg"
+   },
+   {
+      "id": 8,
+      "title": "Lorem ipsum dolor sit amet",
+      "price": 109.95,
+      "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos nulla ab facere beatae illum provident perferendis rem asperiores aliquid nisi?",
+      "image": "/products/5.jpg"
+   },
+   {
+      "id": 9,
+      "title": "Amet nulla error maxime expedita",
+      "price": 22.3,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nulla error maxime expedita optio pariatur?",
+      "image": "/products/3.jpg"
+   },
+   {
+      "id": 10,
+      "title": "Reprehenderit, facere corrupti! Vel, nemo.",
+      "price": 55.99,
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, facere corrupti! Vel, nemo.",
+      "image": "/products/1.jpg"
+   },
+   {
+      "id": 11,
+      "title": "Facilis, quibusdam ipsum dolor",
+      "price": 15.99,
+      "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, quibusdam?",
+      "image": "/products/2.jpg"
+   },
+   {
+      "id": 12,
+      "title": "Facilis, ipsum dolor sit amet",
+      "price": 112.99,
+      "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, quibusdam?",
+      "image": "/products/7.jpg"
+   }
+]
