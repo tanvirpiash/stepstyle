@@ -4,34 +4,41 @@ import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 
 export default async function auth(formState, formData) {
-   const userCred = {
-      email: formData.get('email'),
-      password: formData.get('password'),
-   };
-   const userList = await fs.readFile(
-      process.cwd() + '/public/auth.json',
-      'utf8'
-   );
-   const { admin, user } = JSON.parse(userList);
-   const isAdmin = admin.some(
-      (user) =>
-         user.email == userCred.email && user.password == userCred.password
-   );
-   const isUser = user.some(
-      (user) =>
-         user.email == userCred.email && user.password == userCred.password
-   );
-   if (isAdmin) {
-      cookies().set('type', 'admin');
-      cookies().set('email', userCred.email);
-      redirect('/');
+   try {
+      const userCred = {
+         email: formData.get('email'),
+         password: formData.get('password'),
+      };
+      const userList = await fs.readFile(
+         process.cwd() + '/public/auth.json',
+         'utf8'
+      );
+      const { admin, user } = JSON.parse(userList);
+      const isAdmin = admin.some(
+         (user) =>
+            user.email == userCred.email && user.password == userCred.password
+      );
+      const isUser = user.some(
+         (user) =>
+            user.email == userCred.email && user.password == userCred.password
+      );
+      if (isAdmin) {
+         cookies().set('type', 'admin');
+         cookies().set('email', userCred.email);
+         redirect('/');
+      }
+      if (isUser) {
+         cookies().set('type', 'user');
+         cookies().set('email', userCred.email);
+         redirect('/');
+      }
+      return {
+         message: 'Wrong credentials Invalid Email or Password',
+      };
+   } catch (error) {
+      console.log(error);
+      return {
+         message: 'Error occured when validating Email or Password',
+      };
    }
-   if (isUser) {
-      cookies().set('type', 'user');
-      cookies().set('email', userCred.email);
-      redirect('/');
-   }
-   return {
-      message: 'Wrong credentials Invalid Email or Password',
-   };
 }

@@ -4,27 +4,32 @@ export const metadata = {
    title: 'Profile',
 };
 async function getUserInfo() {
-   const userEmail = cookies().get('email').value;
-   const userList = await fs.readFile(
-      process.cwd() + '/public/auth.json',
-      'utf8'
-   );
-   const { admin, user } = JSON.parse(userList);
-   let allUser = [];
-   admin.forEach((element) => {
-      allUser.push({
-         email: element.email,
-         type: 'admin',
+   try {
+      const userEmail = cookies().get('email').value;
+      const userList = await fs.readFile(
+         process.cwd() + '/public/auth.json',
+         'utf8'
+      );
+      const { admin, user } = JSON.parse(userList);
+      let allUser = [];
+      admin.forEach((element) => {
+         allUser.push({
+            email: element.email,
+            type: 'admin',
+         });
       });
-   });
-   user.forEach((element) => {
-      allUser.push({
-         email: element.email,
-         type: 'user',
+      user.forEach((element) => {
+         allUser.push({
+            email: element.email,
+            type: 'user',
+         });
       });
-   });
-   const userInfo = allUser.find((e) => e.email === `${userEmail}`);
-   return userInfo;
+      const userInfo = allUser.find((e) => e.email === `${userEmail}`);
+      return userInfo;
+   } catch (error) {
+      console.log(error);
+      return error;
+   }
 }
 export default async function ProfilePage() {
    const userInfo = await getUserInfo();
@@ -53,7 +58,7 @@ export default async function ProfilePage() {
                      Email address
                   </dt>
                   <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-                     {userInfo.email}
+                     {userInfo?.email}
                   </dd>
                </div>
                <div className='py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>

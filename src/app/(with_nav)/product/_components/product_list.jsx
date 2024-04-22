@@ -1,10 +1,15 @@
 import ProductCard from './product_card';
 
 async function getAllProduct() {
-   const products = await (
-      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/product-list`)
-   ).json();
-   return products;
+   try {
+      const products = await (
+         await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/product-list`)
+      ).json();
+      return products;
+   } catch (error) {
+      console.log(error);
+      return error;
+   }
 }
 
 export default async function ProductList() {
@@ -17,13 +22,13 @@ export default async function ProductList() {
    return (
       <section>
          <div class='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4'>
-            {productInChunk.map((outer, outerIndex) => {
+            {productInChunk?.map((outer, outerIndex) => {
                return (
                   <div
                      class='grid gap-4 md:flex md:flex-col md:gap-4'
                      key={`product-in-chunk-outer-${outerIndex}`}
                   >
-                     {outer.map((inner, innerIndex) => {
+                     {outer?.map((inner, innerIndex) => {
                         return (
                            <div
                               key={`product-in-chunk-inner-${innerIndex}`}

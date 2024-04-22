@@ -3,32 +3,37 @@ export const metadata = {
    title: 'Users List',
 };
 async function getUserList() {
-   const userList = await fs.readFile(
-      process.cwd() + '/public/auth.json',
-      'utf8'
-   );
-   const { admin, user } = JSON.parse(userList);
-   let allUser = [];
-   let sl = 0;
-   admin.forEach((element) => {
-      sl++;
-      allUser.push({
-         sl,
-         username: element.email,
-         email: element.email,
-         type: 'admin',
+   try {
+      const userList = await fs.readFile(
+         process.cwd() + '/public/auth.json',
+         'utf8'
+      );
+      const { admin, user } = JSON.parse(userList);
+      let allUser = [];
+      let sl = 0;
+      admin.forEach((element) => {
+         sl++;
+         allUser.push({
+            sl,
+            username: element.email,
+            email: element.email,
+            type: 'admin',
+         });
       });
-   });
-   user.forEach((element) => {
-      sl++;
-      allUser.push({
-         sl,
-         username: element.email,
-         email: element.email,
-         type: 'user',
+      user.forEach((element) => {
+         sl++;
+         allUser.push({
+            sl,
+            username: element.email,
+            email: element.email,
+            type: 'user',
+         });
       });
-   });
-   return allUser;
+      return allUser;
+   } catch (error) {
+      console.log(error);
+      return error;
+   }
 }
 export default async function UserListPage() {
    const userList = await getUserList();
@@ -52,7 +57,7 @@ export default async function UserListPage() {
                </tr>
             </thead>
             <tbody>
-               {userList.map((e, index) => {
+               {userList?.map((e, index) => {
                   return (
                      <tr
                         key={`user-list-${typeof e}-${index}`}
