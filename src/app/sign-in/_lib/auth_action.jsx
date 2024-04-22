@@ -15,18 +15,20 @@ export default async function auth(formState, formData) {
    const { admin, user } = JSON.parse(userList);
    const isAdmin = admin.some(
       (user) =>
-         user.username == userCred.email && user.password == userCred.password
+         user.email == userCred.email && user.password == userCred.password
    );
    const isUser = user.some(
       (user) =>
-         user.username == userCred.email && user.password == userCred.password
+         user.email == userCred.email && user.password == userCred.password
    );
    if (isAdmin) {
       cookies().set('type', 'admin');
+      cookies().set('email', userCred.email);
       redirect('/');
    }
    if (isUser) {
       cookies().set('type', 'user');
+      cookies().set('email', userCred.email);
       redirect('/');
    }
    return {

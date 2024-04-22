@@ -60,12 +60,12 @@ export default function MainLayout({ children }) {
             </div>
          </div>
          <div className='md:max-w-[calc(100vw-220px)] overflow-hidden'>
-            <header className='flex h-[60px] items-center justify-between md:justify-end gap-4 px-4 lg:px-6 md:bg-gray-600'>
-               <nav className='w-full bg-[#ffffff] rounded-md h-auto hidden sm:max-md:block relative'>
-                  <div className='flex items-center justify-between py-[10px] px-[20px] border-b-2 border-b-[#eff1f7]'>
+            <header className='md:h-[60px] flex items-center justify-between md:justify-end gap-4 px-4 lg:px-6 md:bg-gray-600'>
+               <nav className='w-full bg-[#ffffff] rounded-md h-auto md:hidden block relative'>
+                  <div className='flex items-center justify-between py-[10px] px-[20px]'>
                      <Link href={'/'}>
                         <BiPackage className='h-6 w-6' color='black' />
-                        <span className=''>Link3</span>
+                        <span className=''>Demo</span>
                      </Link>
                      <button
                         onClick={() => {
@@ -80,7 +80,7 @@ export default function MainLayout({ children }) {
                      </button>
                   </div>
                   <ul
-                     className={`flex flex-col gap-1 absolute bg-white z-10 w-full overflow-hidden ${
+                     className={`flex flex-col rounded-md transition-all ease-in-out duration-300 gap-1 absolute bg-white z-10 w-full overflow-hidden ${
                         isCollapsed ? 'h-0' : 'h-auto'
                      }`}
                   >
@@ -101,7 +101,7 @@ export default function MainLayout({ children }) {
                   </ul>
                </nav>
             </header>
-            <main className='container p-4 max-h-[calc(100vh-56px)] overflow-y-auto'>
+            <main className='container p-4 max-h-[calc(100vh-60px)] overflow-y-auto'>
                {children}
             </main>
          </div>
