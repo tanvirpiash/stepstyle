@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs';
 import { cookies } from 'next/headers';
+export const dynamic = 'force-dynamic';
 export const metadata = {
    title: 'Profile',
 };

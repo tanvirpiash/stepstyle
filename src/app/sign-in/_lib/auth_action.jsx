@@ -25,20 +25,14 @@ export default async function auth(formState, formData) {
       if (isAdmin) {
          cookies().set('type', 'admin');
          cookies().set('email', userCred.email);
-         redirect('/');
-      }
-      if (isUser) {
+      } else if (isUser) {
          cookies().set('type', 'user');
          cookies().set('email', userCred.email);
-         redirect('/');
+      } else {
+         return { message: 'invalid username/password' };
       }
-      return {
-         message: 'Wrong credentials Invalid Email or Password',
-      };
    } catch (error) {
       console.log(error);
-      return {
-         message: 'Error occured when validating Email or Password',
-      };
    }
+   redirect('/');
 }
