@@ -1,4 +1,7 @@
 import { promises as fs } from 'fs';
+export const metadata = {
+   title: 'Users List',
+};
 async function getUserList() {
    const userList = await fs.readFile(
       process.cwd() + '/public/auth.json',
@@ -53,7 +56,7 @@ export default async function UserListPage() {
                   return (
                      <tr
                         key={`user-list-${typeof e}-${index}`}
-                        className='bg-white'
+                        className='transition-all ease-in-out duration-200 bg-white hover:bg-gray-100'
                      >
                         <td
                            className={`px-6 py-4 ${

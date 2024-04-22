@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { MdSpaceDashboard } from 'react-icons/md';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { BiPackage } from 'react-icons/bi';
@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { PiUserListBold } from 'react-icons/pi';
 import { BsBag } from 'react-icons/bs';
+
 const menuItem = {
    admin: [
       { url: '/', text: 'Dashboard', icon: <MdSpaceDashboard /> },
@@ -23,6 +24,7 @@ const menuItem = {
    ],
 };
 export default function MainLayout({ children }) {
+   const router = useRouter();
    const type = Cookies.get('type');
    const pathname = usePathname();
    const [isCollapsed, setCollapse] = useState(true);
@@ -63,7 +65,10 @@ export default function MainLayout({ children }) {
             <header className='md:h-[60px] flex items-center justify-between md:justify-end gap-4 px-4 lg:px-6 md:bg-gray-600'>
                <nav className='w-full bg-[#ffffff] rounded-md h-auto md:hidden block relative'>
                   <div className='flex items-center justify-between py-[10px] px-[20px]'>
-                     <Link href={'/'}>
+                     <Link
+                        href={'/'}
+                        className='flex items-center justify-start gap-1'
+                     >
                         <BiPackage className='h-6 w-6' color='black' />
                         <span className=''>Demo</span>
                      </Link>
@@ -80,7 +85,7 @@ export default function MainLayout({ children }) {
                      </button>
                   </div>
                   <ul
-                     className={`flex flex-col rounded-md transition-all ease-in-out duration-300 gap-1 absolute bg-white z-10 w-full overflow-hidden ${
+                     className={`flex flex-col rounded-md transition-all ease-in-out duration-300 gap-1 absolute bg-white z-10 w-full overflow-hidden shadow-sm ${
                         isCollapsed ? 'h-0' : 'h-auto'
                      }`}
                   >
@@ -98,8 +103,30 @@ export default function MainLayout({ children }) {
                            </li>
                         );
                      })}
+                     <li className='flex items-center justify-center mb-2'>
+                        <button
+                           className={`transition-all px-4 py-2  ease-in-out duration-300 rounded-md bg-black text-white shadow-sm py-2 hover:cursor-pointer disabled:cursor-not-allowed text-sm hover:bg-gray-700`}
+                           onClick={() => {
+                              Cookies.remove('type');
+                              Cookies.remove('email');
+                              router.push('/sign-in');
+                           }}
+                        >
+                           Sign-Out
+                        </button>
+                     </li>
                   </ul>
                </nav>
+               <button
+                  className={`hidden md:block shadow-sm transition-all px-4 py-2 ease-in-out duration-300 rounded-md bg-red-800 text-white shadow-sm py-2 hover:cursor-pointer disabled:cursor-not-allowed text-sm hover:bg-gray-700`}
+                  onClick={() => {
+                     Cookies.remove('type');
+                     Cookies.remove('email');
+                     router.push('/sign-in');
+                  }}
+               >
+                  Sign-Out
+               </button>
             </header>
             <main className='container p-4 max-h-[calc(100vh-60px)] overflow-y-auto'>
                {children}

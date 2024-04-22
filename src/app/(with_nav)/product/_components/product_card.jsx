@@ -3,7 +3,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 export default function ProductCard({ productDetails }) {
    return (
       <div className='relative overflow-hidden pb-10'>
-         <div className='absolute top-2 right-2 bg-white px-1 px-6 py-[6px] rounded-full text-xs font-thin z-10'>
+         <div className='absolute top-2 right-2 bg-white px-1 px-6 py-[6px] rounded-full text-xs font-thin z-1'>
             <span className='mr-1'>&#2547;</span>
             <span className='text-sm font-normal'>{productDetails.price}</span>
          </div>

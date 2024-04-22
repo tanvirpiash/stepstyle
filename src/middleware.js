@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 
-// This function can be marked `async` if using `await` inside
 export function middleware(request) {
    if (!request.cookies.has('type')) {
       return NextResponse.redirect(new URL('/sign-in', request.url));
@@ -15,20 +14,18 @@ export function middleware(request) {
       if (matchesProtectedPath) {
          return NextResponse.next();
       } else {
-         return NextResponse.redirect(new URL('/sign-in', request.url));
+         return NextResponse.redirect(new URL('/access-denied', request.url));
       }
    } else if (userRole === 'user') {
       const matchesProtectedPath = userPaths.some((path) => path === pathname);
       if (matchesProtectedPath) {
          return NextResponse.next();
       } else {
-         return NextResponse.redirect(new URL('/sign-in', request.url));
+         return NextResponse.redirect(new URL('/access-denied', request.url));
       }
    }
-   //    return NextResponse.redirect(new URL('/home', request.url));
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
    matcher: ['/', '/product', '/profile', '/users-list'],
 };

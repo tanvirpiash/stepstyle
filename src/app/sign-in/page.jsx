@@ -1,5 +1,7 @@
 import SignInForm from './_components/signin_form';
-
+export const metadata = {
+   title: 'Sign In',
+};
 export default function SignInPage() {
    return (
       <>
@@ -8,7 +10,8 @@ export default function SignInPage() {
                <div className='grid gap-2 text-center'>
                   <h1 className='text-3xl font-bold'>Login</h1>
                   <p className='text-balance text-md font-light'>
-                     Enter your email below to login to your account
+                     Enter your email and password below to login to your
+                     account
                   </p>
                </div>
                <SignInForm />
