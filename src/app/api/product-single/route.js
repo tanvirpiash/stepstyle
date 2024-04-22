@@ -12,6 +12,6 @@ export async function GET(request) {
       const productSingle = products.find((item) => item.id == id);
       return Response.json(productSingle);
    } catch (error) {
-      Response.error(error);
+      return Response.error();
    }
 }

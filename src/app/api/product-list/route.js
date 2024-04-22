@@ -8,6 +8,6 @@ export async function GET() {
       const products = JSON.parse(productList);
       return Response.json(products);
    } catch (error) {
-      return Response.error(error);
+      return Response.error();
    }
 }
